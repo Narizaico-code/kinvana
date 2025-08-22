@@ -78,10 +78,79 @@ public class KinvanaApplication implements CommandLineRunner {
 					logger.info("Cliente no encontrado: " + sl + cliente + sl);
 				}
 			}
-			case 3 -> {}
-			case 4 -> {}
+			case 3 -> {
+				logger.info(sl+"*** Agregar nuevo cliente ***" + sl);
+				logger.info("Ingrese el nombre: ");
+				var nombre = consola.nextLine();
+				logger.info("Ingrese el apellido: ");
+				var apellido = consola.nextLine();
+				logger.info("Ingrese el numero de telefono: ");
+				var telefono = consola.nextLine();
+				logger.info("Ingrese el correo electronico: ");
+				var correo = consola.nextLine();
+				logger.info("Ingrese el genero (masculino, femenino o no): ");
+				var genero = consola.nextLine();
+				logger.info("Ingrese la edad: ");
+				var edad = Integer.parseInt(consola.nextLine());
+				var cliente = new Cliente();
+				cliente.setNombre(nombre);
+				cliente.setApellido(apellido);
+				cliente.setTelefono(telefono);
+				cliente.setCorreo(correo);
+				if (genero.equalsIgnoreCase("masculino") || genero.equalsIgnoreCase("femenino") || genero.equalsIgnoreCase("no")){
+					cliente.setGenero(genero);
+				}else{
+					logger.info("Debe elegir masculino, femenino o no");
+				}
+				cliente.setEdad(edad);
+				clienteService.guardarCliente(cliente);
+				logger.info("Cliente agregado: " + sl + cliente + sl);
+			}
+			case 4 -> {
+				logger.info(sl + "*** Modificar Cliente ***" + sl);
+				logger.info("Ingrese el codigo del Cliente a editar");
+				var codigo = Integer.parseInt(consola.nextLine());
+				Cliente cliente = clienteService.buscarClientePorId(codigo);
+				if (cliente != null){
+					logger.info("Ingrese el nombre: ");
+					var nombre = consola.nextLine();
+					logger.info("Ingrese el apellido: ");
+					var apellido = consola.nextLine();
+					logger.info("Ingrese el numero de telefono: ");
+					var telefono = consola.nextLine();
+					logger.info("Ingrese el correo electronico: ");
+					var correo = consola.nextLine();
+					logger.info("Ingrese el genero (masculino, femenino o no): ");
+					var genero = consola.nextLine();
+					logger.info("Ingrese la edad: ");
+					var edad = Integer.parseInt(consola.nextLine());
+					cliente.setNombre(nombre);
+					cliente.setApellido(apellido);
+					cliente.setTelefono(telefono);
+					cliente.setCorreo(correo);
+					if (genero.equalsIgnoreCase("masculino") || genero.equalsIgnoreCase("femenino") || genero.equalsIgnoreCase("no")){
+						cliente.setGenero(genero);
+					}else{
+						logger.info("Debe elegir masculino, femenino o no");
+					}
+					cliente.setEdad(edad);
+					clienteService.guardarCliente(cliente);
+					logger.info("Cliente modificado: " + sl + cliente + sl);
+				}else {
+					logger.info("Cliente no encontrado: " + sl + cliente + sl);
+				}
+			}
 			case 5 -> {
-
+				logger.info(sl+"*** Eliminar cliente ***"+sl);
+				logger.info("Ingrese el codigo del cliente a eliminar");
+				var codigo = Integer.parseInt(consola.nextLine());
+				var cliente = clienteService.buscarClientePorId(codigo);
+				if (cliente != null){
+					clienteService.eliminarCliente(cliente);
+					logger.info("Cliente eliminado, adios: " + sl + cliente + sl);
+				}else{
+					logger.info("Cliente no encontrado: " + sl + cliente + sl);
+				}
 			}
 			case 6 -> {
 				logger.info("Hasta pronto, Vaquero!☺☻♥♦♣♠•◘○♂▬!,7B" + sl + sl);
