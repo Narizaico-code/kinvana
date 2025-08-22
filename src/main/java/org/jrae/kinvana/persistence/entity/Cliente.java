@@ -16,14 +16,9 @@ public class Cliente {
     private Integer codigoCliente; //Permite usar null en vez de 0
     @Column
     private String nombre;
-    @Column
     private String apellido;
-    @Column
     private String telefono;
-    @Column
     private String correo;
-    @Column
     private String genero; // Es un enum
-    @Column
     private Integer edad;
 }
