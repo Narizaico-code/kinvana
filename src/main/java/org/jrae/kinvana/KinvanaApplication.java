@@ -1,20 +1,23 @@
 package org.jrae.kinvana;
 
 import org.jrae.kinvana.dominio.service.IClienteService;
+import org.jrae.kinvana.persistence.entity.Cliente;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.jrae.kinvana.persistence.entity.Cliente;
 
+import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
 public class KinvanaApplication implements CommandLineRunner {
 
 	// Inyeccion de dependencia
-	//@Autowired
+	@Autowired
 	private IClienteService clienteService;
 	// Crear nuestro Objeto (herramienta) Logger para interactuar con la consola
 	private static final Logger logger = LoggerFactory.getLogger(KinvanaApplication.class);
@@ -58,6 +61,34 @@ public class KinvanaApplication implements CommandLineRunner {
 	}
 
 	private boolean ejecutarOpciones(Scanner consola, int opcion){
-		return false;
+		var salir = false;
+		switch (opcion) {
+			case 1 -> {
+				logger.info(sl+"*** Listado de todos los clientes ***"+sl);
+				List<Cliente> clientes = clienteService.listarClientes();
+				clientes.forEach(c -> logger.info(c.toString()+sl));
+			}
+			case 2 -> {
+				logger.info(sl+"*** Buscar cliente por su codigo ***"+sl);
+				var codigo = Integer.parseInt(consola.nextLine());
+				Cliente cliente = clienteService.buscarClientePorId(codigo);
+				if (cliente != null) {
+					logger.info("Cliente encontrado: " + sl + cliente + sl);
+				}else{
+					logger.info("Cliente no encontrado: " + sl + cliente + sl);
+				}
+			}
+			case 3 -> {}
+			case 4 -> {}
+			case 5 -> {
+
+			}
+			case 6 -> {
+				logger.info("Hasta pronto, Vaquero!☺☻♥♦♣♠•◘○♂▬!,7B" + sl + sl);
+				salir = true;
+			}
+			default -> logger.info("Opcion no valida!!!");
+		}
+		return salir;
 	}
 }

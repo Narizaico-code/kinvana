@@ -3,9 +3,10 @@ package org.jrae.kinvana.dominio.service;
 import org.jrae.kinvana.persistence.crud.ClienteCrud;
 import org.jrae.kinvana.persistence.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ClienteService implements IClienteService{
 
     // Inyeccion de dependencias de mi Repositorio (ClienteCrud) [ClienteRepository]
