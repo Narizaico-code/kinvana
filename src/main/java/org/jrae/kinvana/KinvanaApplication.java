@@ -13,7 +13,7 @@ import org.jrae.kinvana.persistence.entity.Cliente;
 import java.util.List;
 import java.util.Scanner;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class KinvanaApplication implements CommandLineRunner {
 
 	// Inyeccion de dependencia

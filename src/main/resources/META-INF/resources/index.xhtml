@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h = "http://xmlns.jcp.org/jsf/html"
+        xmlns:f = "http://xmlns.jcp.org/jsf/core"
+        xmlns:p = "http://primefaces.org/ui">
+    <h:head>
+        <title>Kinvana 2024435</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/themes/primeone-dark.css"/>
+
+    </h:head>
+    <h:body>
+        <h1>Hola mundo</h1>
+        <h2>Hola mund</h2>
+        <h3>Hola mun</h3>
+        <h4>Hola mu</h4>
+        <h5>Hola m</h5>
+        <h6>Hola </h6>
+
+        <p>Hola mundo, estoy en server faces, desde Spring Boot</p>
+
+        <div class="card">
+            <h:form id="formulario-clientes">
+                <!--Mensaje emergente -->
+                <p:growl id="mensaje_emergente" showDetails="true"/>
+
+                <div class="card">
+                    <p:menubar>
+                        <p:menuitem value="Inicio" icon="pi pi-fw pi-user"
+                            update=":formulario-clientes:tabla-clientes"
+                            actionListener="#{indexController.cargarDatos}"/>
+                        <p:menuitem value="Nuevo cliente" />
+                    </p:menubar>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</h:html>
