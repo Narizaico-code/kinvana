@@ -55,7 +55,7 @@
                         <p:column headerText="ID">
                             <h:outputText value="#{cliente.codigoCliente}"/>
                         </p:column>
-                        <p:column headerText="NOMBRE">
+                        <p:column headerText="NOMBRE" sortBy="#{cliente.nombre}" filterBy="#{cliente.nombre}">
                             <h:outputText value="#{cliente.nombre}"/>
                         </p:column>
                         <p:column headerText="APELLIDO">
