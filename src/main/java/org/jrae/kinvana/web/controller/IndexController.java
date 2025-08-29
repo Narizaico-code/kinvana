@@ -8,7 +8,6 @@ import lombok.Data;
 import org.jrae.kinvana.dominio.service.IClienteService;
 import org.jrae.kinvana.persistence.entity.Cliente;
 import org.primefaces.PrimeFaces;
-import org.primefaces.application.resource.PrimeResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +78,7 @@ public class IndexController {
         // Actualizar la tabla con ajax
         PrimeFaces.current().ajax().update(
                 "formulario-clientes:mensaje_emergente",
-                "formulario-cliente:tabla-clientes");
+                "formulario-clientes:tabla-clientes");
     }
 
 }
